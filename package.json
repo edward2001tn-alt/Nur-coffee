@@ -1,0 +1,52 @@
+{
+  "name": "nur-coffee",
+  "version": "0.1.0",
+  "private": true,
+  "description": "NUR COFFEE commerce: storefront, Coffee Studio (B2B/OEM) and approved-seller marketplace",
+  "engines": {
+    "node": ">=22.11 <23"
+  },
+  "scripts": {
+    "db:start": "tsx scripts/dev-db.ts start",
+    "db:stop": "tsx scripts/dev-db.ts stop",
+    "db:migrate": "prisma migrate deploy",
+    "db:migrate:dev": "prisma migrate dev",
+    "db:seed": "tsx --env-file=.env prisma/seed.ts",
+    "setup": "npm run db:start && npm run db:migrate && npm run db:seed",
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "worker": "tsx --env-file=.env worker/index.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:unit": "vitest run tests/unit",
+    "test:integration": "vitest run tests/integration",
+    "test:e2e": "tsx --env-file=.env tests/e2e/run.ts",
+    "test:load": "tsx --env-file=.env tests/load/run.ts",
+    "backup": "tsx --env-file=.env scripts/backup.ts",
+    "restore": "tsx --env-file=.env scripts/restore.ts"
+  },
+  "dependencies": {
+    "@node-rs/argon2": "2.2.2",
+    "@prisma/client": "6.19.3",
+    "next": "16.4.2",
+    "react": "19.2.9",
+    "react-dom": "19.2.9",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "embedded-postgres": "17.10.0-beta.17",
+    "eslint": "^9.20.0",
+    "eslint-config-next": "16.4.2",
+    "prisma": "6.19.3",
+    "tailwindcss": "4.3.3",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vitest": "3.2.7"
+  }
+}
